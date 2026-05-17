@@ -2,6 +2,13 @@
 // Copyright © 2018-2023 WireGuard LLC. All Rights Reserved.
 
 import Foundation
+// Upstream compiles this file in a context where TunnelConfiguration
+// is in the same module (Shared/Model + WireGuardKit both end up
+// linked into the WireGuardApp UI target). When we expose this file
+// as its own SPM target (WireGuardKitWgQuickParser), the dependency
+// has to be explicit — without this import the compiler errors
+// with "cannot find type 'TunnelConfiguration' in scope".
+import WireGuardKit
 
 extension TunnelConfiguration {
 
